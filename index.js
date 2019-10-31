@@ -80,11 +80,11 @@ function getName(person) {
 function makeSmartPerson(name) {
   return{
     name:name,
-    sum:function(a,b){
+    sum(a,b){
       return a+b
     },
 
-    speak:function(){
+    speak(){
       return "Hello, my name is" + name;
     }
 
@@ -147,7 +147,14 @@ function getCarInfoById(cars,id) {
 */
 function sortCarInventory(cars) {
   
-  
+   return cars.sort((a,b)=>{
+    if (a.car_model < b.car_model){
+      return -1;
+    }else if(a.car_model > b.car_model){
+      return 1;
+    }return 0;
+
+  });
 }
 
 /**
@@ -203,6 +210,7 @@ function getOlderCars(cars,maxYear) {
 function getGermanCars(cars) {
   const carArray = [];
   for(let i = 0;i<cars.length;i++){
+    
     switch (cars[i].car_make){
       case "Audi":
       case "Mercedes-Benz": 
